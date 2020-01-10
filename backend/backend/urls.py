@@ -16,6 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from nothyP import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pokemon/list', views.pokemon_list),
+    path('pokemon/create', views.pokemon_form_create),
+    path('pokemon/<int:pk>/get', views.pokemon_form_get),
+    path('pokemon/<int:pk>/update', views.pokemon_form_update),
+    path('pokemon/<int:pk>/delete', views.pokemon_delete),
+    path('pokemontrainer/list', views.pokemontrainer_list),
+    path('pokemontrainer/create', views.pokemontrainer_form_create),
+    path('pokemontrainer/<int:pk>/get', views.pokemontrainer_form_get),
+    path('pokemontrainer/<int:pk>/update', views.pokemontrainer_form_update),
+    path('pokemontrainer/<int:pk>/delete', views.trainer_delete),
+    path('region/list', views.region_list),
+    path('region/create', views.region_form_create),
+    path('region/<int:pk>/get', views.region_form_get),
+    path('region/<int:pk>/update', views.region_form_update),
+    path('region/<int:pk>/delete', views.region_delete),
+
 ]

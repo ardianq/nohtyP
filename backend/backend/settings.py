@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nothyP.apps.NothypConfig',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

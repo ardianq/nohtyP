@@ -1,0 +1,62 @@
+<form [formGroup]="pokemontrainerFormGroup" class="pokemontrainer-form">
+  <h1 *ngIf="!pokemontrainerFormGroup.controls.id.value">Create Trainer</h1>
+  <h1 *ngIf="pokemontrainerFormGroup.controls.id.value">
+    Update {{pokemontrainerFormGroup.controls.first_name.value + ' ' +
+  pokemontrainerFormGroup.controls.last_name.value }}</h1>
+  <mat-form-field>
+    <input formControlName="first_name" matInput placeholder="First Name" required type="text">
+    <mat-hint align="end"> First Name of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.first_name.hasError('required')"> Trainer First Name is
+      required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="last_name" matInput placeholder="Last Name" required type="text">
+    <mat-hint align="end"> Last Name of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.last_name.hasError('required')"> Trainer Last Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <section class="example-section">
+    <label class="example-margin">Trainer Gender:</label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button [checked]="pokemontrainerFormGroup.controls.gender.value" class="example-margin" value="true">
+        Male
+      </mat-radio-button>
+      <mat-radio-button [checked]="!pokemontrainerFormGroup.controls.gender.value" class="example-margin" value="false">
+        Female
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.gender.hasError('required')"> Trainer Gender is required
+    </mat-error>
+  </section>
+
+  <mat-form-field>
+    <input formControlName="age" matInput min="10" placeholder="Age" required type="number">
+    <mat-hint align="end"> Age of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.age.hasError('required')"> Trainer Age is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="height" matInput placeholder="Height" required step="0.01" type="number">
+    <mat-hint align="end"> Height of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.height.hasError('required')"> Trainer Height is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="weight" matInput placeholder="Weight" required step="0.1" type="number">
+    <mat-hint align="end"> Weight of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemontrainerFormGroup.controls.weight.hasError('required')"> Trainer Weight is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-card-actions align="center">
+    <button (click)="createTrainer()" [disabled]="!pokemontrainerFormGroup.valid" color="accent" mat-raised-button>
+      <span *ngIf="!pokemontrainerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="pokemontrainerFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+
+</form>

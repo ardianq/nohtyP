@@ -1,0 +1,43 @@
+<table [dataSource]="pokemontrainer" mat-table>
+
+  <ng-container matColumnDef="first_name">
+    <th *matHeaderCellDef mat-header-cell> Trainer First Name</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.first_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <th *matHeaderCellDef mat-header-cell> Trainer Last Name</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.last_name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <th *matHeaderCellDef mat-header-cell> Trainer Gender</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.gender ? 'male' : 'female'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th *matHeaderCellDef mat-header-cell> Trainer Age</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.age}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="height">
+    <th *matHeaderCellDef mat-header-cell> Trainer Height</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.height}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="weight">
+    <th *matHeaderCellDef mat-header-cell> Trainer Weight</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>{{pokemontrainer.weight}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell>Actions</th>
+    <td *matCellDef="let pokemontrainer" mat-cell>
+      <button [routerLink]="'/pokemontrainer-form/' + pokemontrainer.id" mat-button>Edit</button>
+      <button (click)="removePokemontrainer(pokemontrainer)" mat-button>Delete</button>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns:displayedColumns;" mat-row></tr>
+</table>

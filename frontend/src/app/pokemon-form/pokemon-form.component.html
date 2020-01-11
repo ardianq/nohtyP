@@ -1,0 +1,64 @@
+<form [formGroup]="pokemonFormGroup" class="pokemon-form">
+  <h1 *ngIf="!pokemonFormGroup.controls.id.value">Create Pokemon</h1>
+  <h1 *ngIf="pokemonFormGroup.controls.id.value">Update {{pokemonFormGroup.controls.name.value}}</h1>
+  <mat-form-field>
+    <input formControlName="name" matInput placeholder="Name" required type="text">
+    <mat-hint align="end"> Name of the Pokemon</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.name.hasError('required')"> Pokemon Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="type" placeholder="Type" required>
+      <mat-option *ngFor="let typeOption of typeService.typeNames | keyvalue"
+                  [value]="typeOption.key">{{typeOption.value | titlecase}}</mat-option>
+    </mat-select>
+    <mat-hint align="end"> Type of the Pokemon</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.type.hasError('required')"> Pokemon Type is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="level" matInput placeholder="Level" required type="number">
+    <mat-hint align="end"> Level of the Pokemon</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.level.hasError('required')"> Pokemon Level is required</mat-error>
+  </mat-form-field>
+
+  <section class="example-section">
+    <label class="example-margin">Pokemon Gender:</label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button [checked]="pokemonFormGroup.controls.gender.value" class="example-margin" value="true">Male
+      </mat-radio-button>
+      <mat-radio-button [checked]="!pokemonFormGroup.controls.gender.value" class="example-margin" value="false">
+        Female
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="pokemonFormGroup.controls.gender.hasError('required')"> Pokemon Gender is required</mat-error>
+  </section>
+
+  <mat-form-field>
+    <mat-select formControlName="pokemon_trainer" placeholder="Trainer" required>
+      <mat-option *ngFor="let trainerOption of trainerOptions"
+                  [value]="trainerOption.id">{{trainerOption.first_name + ' ' + trainerOption.last_name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end"> Level of the Pokemon</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.pokemon_trainer.hasError('required')"> Pokemon Level is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="region" multiple placeholder="Region" required>
+      <mat-option *ngFor="let regionOption of regionOptions"
+                  [value]="regionOption.id">{{regionOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end"> Level of the Pokemon</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.pokemon_trainer.hasError('required')"> Pokemon Level is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-card-actions align="center">
+    <button (click)="createPokemon()" [disabled]="!pokemonFormGroup.valid" color="accent" mat-raised-button>
+      <span *ngIf="!pokemonFormGroup.controls.id.value">Create</span>
+      <span *ngIf="pokemonFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+
+</form>

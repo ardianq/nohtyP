@@ -1,0 +1,16 @@
+<mat-sidenav-container>
+  <mat-toolbar color="primary">
+    <button [matMenuTriggerFor]="pokemonMenu" mat-button> Pokemon</button>
+    <button [matMenuTriggerFor]="pokemontrainerMenu" mat-button> Trainer</button>
+    <mat-menu #pokemonMenu="matMenu">
+      <button mat-menu-item routerLink="pokemon-list"> List Pokemon</button>
+      <button mat-menu-item routerLink="pokemon-form"> Create Pokemon</button>
+    </mat-menu>
+    <mat-menu #pokemontrainerMenu="matMenu">
+      <button mat-menu-item routerLink="pokemontrainer-list"> List Trainers</button>
+      <button mat-menu-item routerLink="pokemontrainer-form"> Create Trainers</button>
+    </mat-menu>
+
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

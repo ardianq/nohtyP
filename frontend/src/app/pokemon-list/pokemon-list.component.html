@@ -1,0 +1,33 @@
+<table [dataSource]="pokemon" mat-table>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> Pokemon Name</th>
+    <td *matCellDef="let pokemon" mat-cell>{{pokemon.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th *matHeaderCellDef mat-header-cell> Pokemon Type</th>
+    <td *matCellDef="let pokemon" mat-cell>{{getReadableType(pokemon.type) | titlecase}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="level">
+    <th *matHeaderCellDef mat-header-cell> Pokemon Level</th>
+    <td *matCellDef="let pokemon" mat-cell>{{pokemon.level}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <th *matHeaderCellDef mat-header-cell> Pokemon Gender</th>
+    <td *matCellDef="let pokemon" mat-cell>{{pokemon.gender ? 'male' : 'female'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell>Actions</th>
+    <td *matCellDef="let pokemon" mat-cell>
+      <button [routerLink]="'/pokemon-form/' + pokemon.id" mat-button>Edit</button>
+      <button (click)="removePokemon(pokemon)" mat-button>Delete</button>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns:displayedColumns;" mat-row></tr>
+</table>

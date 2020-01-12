@@ -24,6 +24,13 @@ import {PokemonFormComponent} from './pokemon-form/pokemon-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PokemontrainerFormComponent} from './pokemontrainer-form/pokemontrainer-form.component';
 import {HttperrorInterceptor} from './httperror.interceptor';
+import {LoginComponent} from './login/login.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import {LogoutComponent} from './logout/logout.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -31,7 +38,9 @@ import {HttperrorInterceptor} from './httperror.interceptor';
     PokemonListComponent,
     PokemontrainerListComponent,
     PokemonFormComponent,
-    PokemontrainerFormComponent
+    PokemontrainerFormComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +59,12 @@ import {HttperrorInterceptor} from './httperror.interceptor';
     MatSidenavModule,
     MatMenuModule,
     MatButtonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -20,6 +20,12 @@
     <td *matCellDef="let pokemon" mat-cell>{{pokemon.gender ? 'male' : 'female'}}</td>
   </ng-container>
 
+  <ng-container matColumnDef="region">
+    <th *matHeaderCellDef mat-header-cell> Pokemon Region(s)</th>
+    <td *matCellDef="let pokemon" mat-cell>{{getReadableRegion(pokemon.region)}}</td>
+  </ng-container>
+
+
   <ng-container matColumnDef="id">
     <th *matHeaderCellDef mat-header-cell>Actions</th>
     <td *matCellDef="let pokemon" mat-cell>

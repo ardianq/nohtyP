@@ -1,0 +1,44 @@
+[
+  {
+    "model": "nothyP.region",
+    "pk": 1,
+    "fields": {
+      "name": "Kanto",
+      "capital": "Saffronia City",
+      "population": 130,
+      "professor": "Professor Oak"
+    }
+  },
+    {
+    "model": "nothyP.region",
+    "pk": 2,
+    "fields": {
+      "name": "Jotho",
+      "capital": "Dukatia City",
+      "population": 126,
+      "professor": "Professor Elm"
+    }
+  },
+
+    {
+    "model": "nothyP.region",
+    "pk": 3,
+    "fields": {
+      "name": "Hoenn",
+      "capital": "Malvenfroh City",
+      "population": 148,
+      "professor": "Professor Birch"
+    }
+  },
+
+    {
+    "model": "nothyP.region",
+    "pk": 4,
+    "fields": {
+      "name": "Sinnoh",
+      "capital": "Jubel City",
+      "population": 120,
+      "professor": "Professor Rowan"
+    }
+  }
+  ]

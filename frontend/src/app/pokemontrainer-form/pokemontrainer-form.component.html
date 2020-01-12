@@ -17,20 +17,23 @@
     <mat-error *ngIf="pokemontrainerFormGroup.controls.last_name.hasError('required')"> Trainer Last Name is required
     </mat-error>
   </mat-form-field>
+  <br>
 
   <section class="example-section">
-    <label class="example-margin">Trainer Gender:</label>
+    <label class="example-margin">Trainer Gender:</label> <br>
     <mat-radio-group formControlName="gender">
       <mat-radio-button [checked]="pokemontrainerFormGroup.controls.gender.value" class="example-margin" value="true">
         Male
       </mat-radio-button>
-      <mat-radio-button [checked]="!pokemontrainerFormGroup.controls.gender.value" class="example-margin" value="false">
+      <mat-radio-button [checked]="!pokemontrainerFormGroup.controls.gender.value" class="example-margin2"
+                        value="false">
         Female
       </mat-radio-button>
     </mat-radio-group>
     <mat-error *ngIf="pokemontrainerFormGroup.controls.gender.hasError('required')"> Trainer Gender is required
     </mat-error>
   </section>
+  <br>
 
   <mat-form-field>
     <input formControlName="age" matInput min="10" placeholder="Age" required type="number">

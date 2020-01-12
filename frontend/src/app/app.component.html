@@ -1,7 +1,7 @@
 <mat-sidenav-container>
-  <mat-toolbar color="primary">
-    <button [matMenuTriggerFor]="pokemonMenu" mat-button> Pokemon</button>
+  <mat-toolbar *ngIf="isLoggedIn" color="primary">
     <button [matMenuTriggerFor]="pokemontrainerMenu" mat-button> Trainer</button>
+    <button [matMenuTriggerFor]="pokemonMenu" mat-button> Pokemon</button>
     <mat-menu #pokemonMenu="matMenu">
       <button mat-menu-item routerLink="pokemon-list"> List Pokemon</button>
       <button mat-menu-item routerLink="pokemon-form"> Create Pokemon</button>
@@ -10,7 +10,8 @@
       <button mat-menu-item routerLink="pokemontrainer-list"> List Trainers</button>
       <button mat-menu-item routerLink="pokemontrainer-form"> Create Trainers</button>
     </mat-menu>
-
+    <span class="spacer"></span>
+    <app-logout></app-logout>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </mat-sidenav-container>

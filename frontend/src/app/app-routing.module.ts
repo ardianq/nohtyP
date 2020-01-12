@@ -24,9 +24,8 @@ const routes: Routes = [
   },
   {path: 'pokemontrainer-form', component: PokemontrainerFormComponent, canActivate: [AuthGuard]},
   {
-    path: 'pokemon-form/:id', component: PokemonFormComponent, resolve: {
-      pokemon: PokemonResolver, canActivate: [AuthGuard],
-      trainerOptions: PokemontrainerOptionResolver, regionOptions: RegionResolver
+    path: 'pokemon-form/:id', component: PokemonFormComponent, canActivate: [AuthGuard], resolve: {
+      pokemon: PokemonResolver, trainerOptions: PokemontrainerOptionResolver, regionOptions: RegionResolver
     }
   },
   {

@@ -5,6 +5,10 @@
     <input formControlName="name" matInput placeholder="Name" required type="text">
     <mat-hint align="end"> Name of the Pokemon</mat-hint>
     <mat-error *ngIf="pokemonFormGroup.controls.name.hasError('required')"> Pokemon Name is required</mat-error>
+    <mat-error *ngIf="pokemonFormGroup.controls.name.hasError('namenotfound')"> We don't know that Pokemon yet, please
+      check your spelling!
+    </mat-error>
+
   </mat-form-field>
 
   <mat-form-field>
@@ -17,9 +21,11 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input formControlName="level" matInput placeholder="Level" required type="number">
+    <input formControlName="level" matInput placeholder="Level" required step="1" type="number">
     <mat-hint align="end"> Level of the Pokemon</mat-hint>
     <mat-error *ngIf="pokemonFormGroup.controls.level.hasError('required')"> Pokemon Level is required</mat-error>
+    <mat-error *ngIf="pokemonFormGroup.controls.level.hasError('min')"> Pokemon Level has to be positive</mat-error>
+    <mat-error *ngIf="pokemonFormGroup.controls.level.hasError('max')"> Maximum Pokemon Level is 100</mat-error>
   </mat-form-field>
 
   <br>
@@ -41,8 +47,8 @@
       <mat-option *ngFor="let trainerOption of trainerOptions"
                   [value]="trainerOption.id">{{trainerOption.first_name + ' ' + trainerOption.last_name}}</mat-option>
     </mat-select>
-    <mat-hint align="end"> Level of the Pokemon</mat-hint>
-    <mat-error *ngIf="pokemonFormGroup.controls.pokemon_trainer.hasError('required')"> Pokemon Level is required
+    <mat-hint align="end"> Name of the Trainer</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.pokemon_trainer.hasError('required')"> Pokemon Trainer is required
     </mat-error>
   </mat-form-field>
 
@@ -51,8 +57,8 @@
       <mat-option *ngFor="let regionOption of regionOptions"
                   [value]="regionOption.id">{{regionOption.name}}</mat-option>
     </mat-select>
-    <mat-hint align="end"> Level of the Pokemon</mat-hint>
-    <mat-error *ngIf="pokemonFormGroup.controls.pokemon_trainer.hasError('required')"> Pokemon Level is required
+    <mat-hint align="end"> Name of the Region</mat-hint>
+    <mat-error *ngIf="pokemonFormGroup.controls.region.hasError('required')"> Pokemon Region is required
     </mat-error>
   </mat-form-field>
 

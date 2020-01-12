@@ -27,6 +27,7 @@ import {HttperrorInterceptor} from './httperror.interceptor';
 import {LoginComponent} from './login/login.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LogoutComponent} from './logout/logout.component';
+import {AuthGuard} from './auth.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -71,7 +72,7 @@ export function tokenGetter() {
     useClass: HttperrorInterceptor,
     multi: true,
     deps: [MatSnackBar]
-  }],
+  }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

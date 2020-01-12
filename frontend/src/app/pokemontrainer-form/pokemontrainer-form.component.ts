@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PokemontrainerService} from '../services/pokemontrainer.service';
 
@@ -18,12 +18,12 @@ export class PokemontrainerFormComponent implements OnInit {
     const data = this.route.snapshot.data;
     this.pokemontrainerFormGroup = this.fb.group({
       id: [null],
-      first_name: [''],
-      last_name: [''],
-      age: [10],
-      gender: [true],
-      height: [null],
-      weight: [null]
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      age: [10, [Validators.required, Validators.min(10)]],
+      gender: [true, Validators.required],
+      height: [null, Validators.required],
+      weight: [null, Validators.required]
 
     });
 
@@ -43,6 +43,7 @@ export class PokemontrainerFormComponent implements OnInit {
       this.pokemontrainerService.createTrainer(pokemontrainer)
         .subscribe((response: any) => {
           this.router.navigate(['/pokemontrainer-form/' + response.id]);
+          alert('created succefully');
         });
     }
   }
